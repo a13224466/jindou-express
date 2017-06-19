@@ -3,25 +3,35 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "webpack & nodemon ./bin/www"
   },
   "dependencies": {
+    "autoprefixer": "^7.1.1",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
     "css-loader": "^0.28.4",
     "debug": "~2.6.3",
     "express": "~4.15.2",
+    "extract-text-webpack-plugin": "^2.1.2",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",
+    "moment": "^2.18.1",
     "morgan": "~1.8.1",
     "mysql": "^2.13.0",
+    "node-sass": "^4.5.3",
     "node-sass-middleware": "0.9.8",
+    "nodemon": "^1.11.0",
+    "postcss-loader": "^2.0.6",
     "pug": "~2.0.0-beta11",
     "requirejs": "^2.3.3",
+    "resolve-url-loader": "^2.0.3",
+    "sass-loader": "^6.0.6",
     "serve-favicon": "~2.4.2",
     "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
     "webpack": "^2.6.1",
     "webpack-dev-middleware": "^1.10.2",
+    "webpack-dev-server": "^2.4.5",
     "webpack-hot-middleware": "^2.18.0"
   }
 }

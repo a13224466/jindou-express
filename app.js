@@ -15,6 +15,16 @@ var users = require('./routes/users');
 
 var app = express();
 
+app.use(require("webpack-dev-middleware")(compiler, {
+  noInfo: false,
+  stats: { colors: true },
+  publicPath: webpackConfig.output.publicPath
+}));
+app.use(require("webpack-hot-middleware")(compiler, {
+  log: console.log,
+  reload: true
+}));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -31,12 +41,6 @@ app.use(sassMiddleware({
   indentedSyntax: true, // true = .sass and false = .scss
   sourceMap: true
 }));
-
-app.use(require("webpack-dev-middleware")(compiler, {
-  noInfo: true,
-  publicPath: webpackConfig.output.publicPath
-}));
-app.use(require("webpack-hot-middleware")(compiler));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'dist')));

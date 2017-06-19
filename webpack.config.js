@@ -1,10 +1,13 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
 const path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
+  devtool: "source-map",
   entry: [
     'webpack-hot-middleware/client',
-    './public/javascripts/main.js',
+    __dirname + '/public/javascripts/main.js',
   ],
   output: {
     filename: 'bundle.js',
@@ -12,33 +15,32 @@ module.exports = {
     publicPath: '/'
   },
   module: {
-    rules: [{
-      test: /\.scss$/,
-      use: ['style-loader', 'css-loader']
-    }],
+    rules: [
+      {
+        test: /\.(css|scss)$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            { loader: 'css-loader', options: { sourceMap: true } },
+            'postcss-loader',
+            'sass-loader',
+          ]
+        })
+      }
+    ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new ExtractTextPlugin({
+      filename: '[name].css'
+    }),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: function () {
+          return [autoprefixer({ browsers: ['last 2 versions'] })];
+        }
+      }
+    })
   ]
-  // module: {
-  //   rules: [{
-  //     test: /.jsx?$/,
-  //     include: [
-  //       path.resolve(__dirname, 'app')
-  //     ],
-  //     exclude: [
-  //       path.resolve(__dirname, 'node_modules'),
-  //       path.resolve(__dirname, 'bower_components')
-  //     ],
-  //     loader: 'babel-loader',
-  //     query: {
-  //       presets: ['es2015']
-  //     }
-  //   }]
-  // },
-  // resolve: {
-  //   extensions: ['.json', '.js', '.jsx', '.css']
-  // },
-  // devtool: 'source-map'
 };
