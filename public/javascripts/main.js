@@ -1,13 +1,12 @@
-// require("../stylesheets/style.scss");
 import '../stylesheets/style.scss';
 import _ from 'lodash';
 
-if (module.hot) { // 
+if (module.hot) { // fix hot update 
   module.hot.accept()
 }
 
 function component() {
-  console.log(_.join(['ni1', 'ha21o2   ', 'a', 'liaoasdf21'], ''));
+  console.log(_.join(['1112'], ''));
 }
 component();
 

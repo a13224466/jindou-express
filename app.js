@@ -44,6 +44,7 @@ app.use(sassMiddleware({
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'config')));
 
 app.use('/', index);
 app.use('/users', users);
