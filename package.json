@@ -31,9 +31,9 @@
     "webpack": "^2.6.1",
     "webpack-dev-middleware": "^1.10.2",
     "webpack-dev-server": "^2.4.5",
-    "webpack-hot-middleware": "^2.18.0"
+    "webpack-hot-middleware": "^2.18.0",
+    "node-sass-middleware": "^0.11.0",
+    "orm": "^3.2.3"
   },
-  "devDependencies": {
-    "node-sass-middleware": "^0.11.0"
-  }
+  "devDependencies": {}
 }

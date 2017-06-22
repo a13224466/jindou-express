@@ -1,13 +1,23 @@
 import '../stylesheets/style.scss';
 import _ from 'lodash';
+import $ from 'jquery';
 
 if (module.hot) { // fix hot update 
   module.hot.accept()
 }
 
-function component() {
-  console.log(_.join(['1112'], ''));
-}
-component();
-
-console.log(__dirname);
+$(function(){
+  $('#add').on('blur', function(){
+    $.ajax({
+      type: "post",
+      url: "/get",
+      data: {
+        id: $(this).val()
+      },
+      dataType: "json",
+      success: function (data) {
+        console.log(data);
+      }
+    });
+  });
+})
