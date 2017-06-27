@@ -8,7 +8,7 @@ router.get('/', function (req, res, next) {
   pool.getConnection(function (err, conn) {
     conn.query(userinfo_sql.queryAll, function (error, results, fields) {
       if (error) throw error;
-      res.render('index.pug', { results: results });
+      res.render('index.html', { results: results, title: 'liaohongdong' });
       conn.release();
     });
   });
@@ -16,7 +16,7 @@ router.get('/', function (req, res, next) {
 
 router.post('/get', function (req, res, next) {
   res.statusCode = 200;
-  res.setHeader('COntent-Type', 'application/json; charset=utf-8');
+  res.setHeader('Content-Type', 'application/json; charset=utf-8');
   res.json({ title: '1', a1: ['1','2','21','22','23','42'], a: 'asdf' });
   // next();
   // pool.getConnection(function (err, conn) {

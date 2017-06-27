@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel="stylesheet" href="/main.css">
+</head>
+
+<body>
+
+  <ul>
+    <% results.forEach(function(item){%>
+        <li><%= item.id %></li>
+    <% }) %>
+  </ul>
+  <!--li= results[i].id + ' ' + results[i].name + ' ' + results[i].age + ' ' + results[i].sex + ' ' + results[i].address + ' ' + results[i].mobile + ' ' + results[i].marry + ' ' + results[i].remark + ' ' + results[i].comment + ' ' + results[i].cardid
+  input(type="text" id="add")-->
+  <script src="/bundle.js"></script>
+</body>
+
+</html>
